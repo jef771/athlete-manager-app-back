@@ -47,7 +47,28 @@ public class AthleteConfig {
                     .imageUrl("https://gerenciador.cob.org.br/arquivos/integrantes/30042019120708isaquias.jpg")
                     .build();
 
-            repository.saveAll(List.of(rebeca, rayssa, isaquias));
+            Athlete richarlison = Athlete.builder()
+                    .athleteName("Richarlison de Andrade")
+                    .athleteDob(LocalDate.of(1997,5,10))
+                    .athleteCommitee("BRA")
+                    .athleteEmail("richarlison.andrade@cob.gov.br")
+                    .athleteGender(Gender.MALE)
+                    .athleteSport("Football")
+                    .imageUrl("https://www.cob.org.br/pt/img/atleta/foto/3538/principal/")
+                    .build();
+
+            Athlete gabriela = Athlete.builder()
+                    .athleteName("Gabriela Braga Guimarães")
+                    .athleteDob(LocalDate.of(1994,5,19))
+                    .athleteCommitee("BRA")
+                    .athleteEmail("gabriela.guimaraes@cob.gov.br")
+                    .athleteGender(Gender.FEMALE)
+                    .athleteSport("Volleyball")
+                    .imageUrl("https://www.cob.org.br/pt/img/atleta/foto/2071/principal/")
+                    .build();
+
+
+            repository.saveAll(List.of(rebeca, rayssa, isaquias, richarlison, gabriela));
         };
     }
 }

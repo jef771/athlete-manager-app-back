@@ -14,8 +14,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class AthleteServiceTest {
@@ -80,6 +79,18 @@ class AthleteServiceTest {
         found = athleteService.fetchAthleteById(id);
 
         assertEquals("rebeca.andrade@cob.gov.br", found.getAthleteEmail());
+    }
+
+    @Test
+    @DisplayName("Dont Get Athlete on invalid email")
+    public void whenInvalidId_thenShouldThrowError() throws AthleteNotFoundException {
+
+        Athlete found = athleteService.fetchAthleteByEmail("rebeca.andrade1@cob.gov.br");
+
+        Throwable exc = assertThrows(AthleteNotFoundException.class, () -> athleteService.fetchAthleteById(2L));
+
+        assertEquals("Athlete with id 2 could not be found", exc.getMessage());
+
     }
 
 
